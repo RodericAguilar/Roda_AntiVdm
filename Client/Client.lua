@@ -1,4 +1,3 @@
-local ESX = exports["es_extended"]:getSharedObject()
 
 CreateThread(function()
 	local DeathReason, Killer, DeathCauseHash, Weapon
