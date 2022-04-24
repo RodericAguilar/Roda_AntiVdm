@@ -10,11 +10,6 @@ client_scripts {
  'Client/*.lua'
 }
 
---Server Scripts-- 
-server_scripts {
-     'Server/*.lua'
-}
-
 shared_scripts {
     'Config.lua'
 }
