@@ -19,8 +19,3 @@ shared_scripts {
     'Config.lua'
 }
 
-function ShowNotification(msg)
-	BeginTextCommandThefeedPost('STRING')
-	AddTextComponentSubstringPlayerName(msg)
-	EndTextCommandThefeedPostTicker(0,1)
-end
