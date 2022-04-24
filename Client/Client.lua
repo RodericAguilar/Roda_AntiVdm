@@ -2,24 +2,16 @@
 CreateThread(function()
 	local DeathReason, Killer, DeathCauseHash, Weapon
 	while true do
+            local playerPed = PlayerPedId()
 		Wait(250)
-		if IsEntityDead(PlayerPedId()) then
-            local PedKiller = GetPedSourceOfDeath(PlayerPedId())
-			local killername = GetPlayerName(PedKiller)
-		    DeathCauseHash = GetPedCauseOfDeath(PlayerPedId())
-            if IsEntityAVehicle(PedKiller) and IsEntityAPed(GetPedInVehicleSeat(PedKiller, -1)) and IsPedAPlayer(GetPedInVehicleSeat(PedKiller, -1)) then
-				Killer = NetworkGetPlayerIndexFromPed(GetPedInVehicleSeat(PedKiller, -1))
-			end
-
-            if CarKill(DeathCauseHash) then
-                Wait(1000)
-                RevivePlayer()
-                if Config.KickUser then 
-                    TriggerServerEvent('Roda_NoVdm:kick', GetPlayerServerId(Killer))
-                end
-            end
+		if IsEntityDead(playerPed) then
+                  DeathCauseHash = GetPedCauseOfDeath(playerPed)
+                  if CarKill(DeathCauseHash) then
+                    Wait(1000)
+                    RevivePlayer()
+                  end
 		end
-		while IsEntityDead(PlayerPedId()) do
+		while IsEntityDead(playerPed) do
 			Wait(1000)
 		end
 	end
